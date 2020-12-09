@@ -15,8 +15,8 @@ https://www.youtube.com/watch?v=lTxaran0Cig
 import pygame
 import player
 import grass
-import barrier
-import coin
+import barrier_manager
+import coin_manager
 import holes
 
 # GLOBAL VARIABLES
@@ -24,10 +24,6 @@ LAST_LEVEL = 11 ##==============================================================
 BACKGROUND = (124, 252 , 0)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
-BARRIER_COLOUR = (40, 26, 13)
-GOLD = (212, 175, 55)
-SILVER = (192, 192, 192)
-BRONZE = (80, 50, 20)
 
 # Initialise pygame and the screen
 pygame.init()
@@ -43,11 +39,9 @@ player = player.Player()
 grass = grass.Grass()
 
 # Initialise barrier helper
-b_helper = barrier.Barrier(BARRIER_COLOUR)
 barriers = []
 
 # Initialise coin helper
-c_helper = coin.Coin(GOLD, SILVER, BRONZE)
 coins = []
 
 # Initialise holes helper
@@ -72,16 +66,16 @@ while running:
     if level == 1 and new_level:
         player.level1()
         grass.level1()
-        barriers = b_helper.level1()
-        coins = c_helper.level1()
+        barriers = barrier_manager.BarrierManager.level1()
+        coins = coin_manager.CoinManager.level1()
         new_level = False
         
     # Set up level 2
     if level == 2 and new_level:
         player.level2()
         grass.level2()
-        barriers = b_helper.level2()
-        coins = c_helper.level2()
+        barriers = barrier_manager.BarrierManager.level2()
+        coins = coin_manager.CoinManager.level2()
         new_level = False
 
      # Set up level 3
@@ -89,8 +83,8 @@ while running:
         player.black_hole_warning(screen, BLACK, BACKGROUND)
         player.level3()
         grass.level3()
-        barriers = b_helper.level3()
-        coins = c_helper.level3()
+        barriers = barrier_manager.BarrierManager.level3()
+        coins = coin_manager.CoinManager.level3()
         holes = holes_helper.level3()
         new_level = False
 
@@ -98,8 +92,8 @@ while running:
     if level == 4 and new_level:
         player.level4()
         grass.level4()
-        barriers = b_helper.level4()
-        coins = c_helper.level4()
+        barriers = barrier_manager.BarrierManager.level4()
+        coins = coin_manager.CoinManager.level4()
         holes = holes_helper.level4()
         new_level = False
 
@@ -108,8 +102,8 @@ while running:
         player.red_hole_warning(screen, BLACK, RED, BACKGROUND)
         player.level5()
         grass.level5()
-        barriers = b_helper.level5()
-        coins = c_helper.level5()
+        barriers = barrier_manager.BarrierManager.level5()
+        coins = coin_manager.CoinManager.level5()
         holes = holes_helper.level5()
         new_level = False
 
@@ -117,8 +111,8 @@ while running:
     if level == 6 and new_level:
         player.level6()
         grass.level6()
-        barriers = b_helper.level6()
-        coins = c_helper.level6()
+        barriers = barrier_manager.BarrierManager.level6()
+        coins = coin_manager.CoinManager.level6()
         holes = holes_helper.level6()
         new_level = False
 
@@ -126,8 +120,8 @@ while running:
     if level == 7 and new_level:
         player.level7()
         grass.level7()
-        barriers = b_helper.level7()
-        coins = c_helper.level7()
+        barriers = barrier_manager.BarrierManager.level7()
+        coins = coin_manager.CoinManager.level7()
         holes = holes_helper.level7()
         new_level = False
 
@@ -140,8 +134,10 @@ while running:
     # Place player, grass, barriers, coins and holes on screen
     screen.blit(player.image, (player.x, player.y))
     screen.blit(grass.image, (grass.x, grass.y))
-    b_helper.draw(screen, barriers)
-    c_helper.draw(screen, coins, player)
+    barrier_manager.BarrierManager.draw(screen, barriers)
+    
+    # c_helper.draw(screen, coins, player)
+    coin_manager.CoinManager.draw(screen, coins, player)
     holes_helper.draw(screen, holes)
 
     # Move player 
@@ -151,7 +147,7 @@ while running:
     pygame.display.update()
 
     # Check if player reaches coin
-    c_helper.player_has_reached(player, coins)
+    coin_manager.CoinManager.player_has_reached(player, coins)
 
     # Check if player reaches hole
     holes_helper.player_has_reached(player, holes, screen, BLACK, BACKGROUND)
