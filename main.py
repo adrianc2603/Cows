@@ -18,9 +18,10 @@ import grass
 import barrier_manager
 import coin_manager
 import holes
+import screen_manager
 
 # GLOBAL VARIABLES
-LAST_LEVEL = 11 ##============================================================================================
+LAST_LEVEL = 10 ##============================================================================================
 BACKGROUND = (124, 252 , 0)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
@@ -38,11 +39,16 @@ pygame.display.set_icon(icon)
 player = player.Player() 
 grass = grass.Grass()
 
-# Initialise barrier helper
+# Initialise barrier manager
+barrier_manager = barrier_manager.BarrierManager()
 barriers = []
 
-# Initialise coin helper
+# Initialise coin manager
+coin_manager = coin_manager.CoinManager()
 coins = []
+
+#Initialise screen manager
+screen_manager = screen_manager.ScreenManager()
 
 # Initialise holes helper
 holes_helper = holes.Holes(BLACK, RED)
@@ -66,25 +72,25 @@ while running:
     if level == 1 and new_level:
         player.level1()
         grass.level1()
-        barriers = barrier_manager.BarrierManager.level1()
-        coins = coin_manager.CoinManager.level1()
+        barriers = barrier_manager.level1()
+        coins = coin_manager.level1()
         new_level = False
         
     # Set up level 2
     if level == 2 and new_level:
         player.level2()
         grass.level2()
-        barriers = barrier_manager.BarrierManager.level2()
-        coins = coin_manager.CoinManager.level2()
+        barriers = barrier_manager.level2()
+        coins = coin_manager.level2()
         new_level = False
 
      # Set up level 3
     if level == 3 and new_level:
-        player.black_hole_warning(screen, BLACK, BACKGROUND)
+        screen_manager.black_hole_warning(screen, BLACK)
         player.level3()
         grass.level3()
-        barriers = barrier_manager.BarrierManager.level3()
-        coins = coin_manager.CoinManager.level3()
+        barriers = barrier_manager.level3()
+        coins = coin_manager.level3()
         holes = holes_helper.level3()
         new_level = False
 
@@ -92,18 +98,18 @@ while running:
     if level == 4 and new_level:
         player.level4()
         grass.level4()
-        barriers = barrier_manager.BarrierManager.level4()
-        coins = coin_manager.CoinManager.level4()
+        barriers = barrier_manager.level4()
+        coins = coin_manager.level4()
         holes = holes_helper.level4()
         new_level = False
 
     # Set up level 5
     if level == 5 and new_level:
-        player.red_hole_warning(screen, BLACK, RED, BACKGROUND)
+        screen_manager.red_hole_warning(screen, RED)
         player.level5()
         grass.level5()
-        barriers = barrier_manager.BarrierManager.level5()
-        coins = coin_manager.CoinManager.level5()
+        barriers = barrier_manager.level5()
+        coins = coin_manager.level5()
         holes = holes_helper.level5()
         new_level = False
 
@@ -111,8 +117,8 @@ while running:
     if level == 6 and new_level:
         player.level6()
         grass.level6()
-        barriers = barrier_manager.BarrierManager.level6()
-        coins = coin_manager.CoinManager.level6()
+        barriers = barrier_manager.level6()
+        coins = coin_manager.level6()
         holes = holes_helper.level6()
         new_level = False
 
@@ -120,8 +126,8 @@ while running:
     if level == 7 and new_level:
         player.level7()
         grass.level7()
-        barriers = barrier_manager.BarrierManager.level7()
-        coins = coin_manager.CoinManager.level7()
+        barriers = barrier_manager.level7()
+        coins = coin_manager.level7()
         holes = holes_helper.level7()
         new_level = False
 
@@ -129,15 +135,15 @@ while running:
     screen.fill(BACKGROUND)
 
     # Display player wealth and current level 
-    player.display_wealth_and_level(screen, level, BLACK, BACKGROUND)
+    screen_manager.display_wealth_and_level(screen, level, player)
 
     # Place player, grass, barriers, coins and holes on screen
     screen.blit(player.image, (player.x, player.y))
     screen.blit(grass.image, (grass.x, grass.y))
-    barrier_manager.BarrierManager.draw(screen, barriers)
+    barrier_manager.draw(screen, barriers)
     
     # c_helper.draw(screen, coins, player)
-    coin_manager.CoinManager.draw(screen, coins, player)
+    coin_manager.draw(screen, coins, player)
     holes_helper.draw(screen, holes)
 
     # Move player 
@@ -145,12 +151,12 @@ while running:
 
     # Update what is shown on the screen
     pygame.display.update()
-
+  
     # Check if player reaches coin
-    coin_manager.CoinManager.player_has_reached(player, coins)
+    coin_manager.player_has_reached(player, coins)
 
     # Check if player reaches hole
-    holes_helper.player_has_reached(player, holes, screen, BLACK, BACKGROUND)
+    holes_helper.player_has_reached(player, holes, screen, screen_manager)
 
     # Check if player reaches grass
     if grass.player_has_reached(player):
@@ -164,7 +170,7 @@ while running:
 
     # Check if player has completed game
     if level > LAST_LEVEL:
-        player.game_is_completed(screen, BLACK, BACKGROUND)
+        screen_manager.game_is_completed(screen)
         running = False
 
     # Reset to level 1 if player wealth is below $0

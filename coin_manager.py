@@ -3,33 +3,37 @@ import pygame
 class CoinManager:
 
     """
+    Constructor
+    """
+    def __init__(self):
+        self.gold = (212, 175, 55)
+        self.silver = (192, 192, 192)
+        self.bronze = (80, 50, 20)
+        self.radius = 15
+        self.diameter = 30
+
+    """
     Place all coins on the screen
     """
-    def draw(screen, coins, player):
-
-        gold = (212, 175, 55)
-        silver = (192, 192, 192)
-        bronze = (80, 50, 20)
-        radius = 15
-
+    def draw(self, screen, coins, player):
         for c in coins:
 
             # Gold coins
             if c[2] == 3: 
-                pygame.draw.circle(screen, gold, [c[0], c[1]], radius)
+                pygame.draw.circle(screen, self.gold, [c[0], c[1]], self.radius)
 
             # Silver coins
             if c[2] == 2:
-                pygame.draw.circle(screen, silver, [c[0], c[1]], radius)
+                pygame.draw.circle(screen, self.silver, [c[0], c[1]], self.radius)
 
             # Bronze coins
             if c[2] == 1:
-                pygame.draw.circle(screen, bronze, [c[0], c[1]], radius)
+                pygame.draw.circle(screen, self.bronze, [c[0], c[1]], self.radius)
 
     """
     Level 1 Coins
     """
-    def level1():
+    def level1(self):
         coins = []
 
         # Row 1
@@ -69,7 +73,7 @@ class CoinManager:
     """
     Level 2 Coins
     """
-    def level2():
+    def level2(self):
         coins = []
 
         # Row 1
@@ -103,7 +107,7 @@ class CoinManager:
     """
     Level 3 Coins
     """
-    def level3():
+    def level3(self):
         coins = []
 
         # Row 1
@@ -143,7 +147,7 @@ class CoinManager:
     """
     Level 4 Coins
     """
-    def level4():
+    def level4(self):
         coins = []
 
         # Row 1
@@ -185,7 +189,7 @@ class CoinManager:
     """
     Level 5 Coins
     """
-    def level5():
+    def level5(self):
         coins = []
 
         # Row 1
@@ -227,7 +231,7 @@ class CoinManager:
     """
     Level 6 Coins
     """
-    def level6():
+    def level6(self):
         coins = []
 
         # Row 1
@@ -264,7 +268,7 @@ class CoinManager:
     """
     Level 7 Coins
     """
-    def level7():
+    def level7(self):
         coins = []
 
         # Row 1
@@ -301,12 +305,9 @@ class CoinManager:
     If a player has collected a coin, remove it from the screen and add 
     the coin's worth to the player's wealth
     """
-    def player_has_reached(player, coins):
-        radius = 15
-        diameter = 30
-
+    def player_has_reached(self, player, coins):
         for c in coins:
-            c_rect = pygame.Rect(c[0] - radius, c[1] - radius, diameter, diameter)
+            c_rect = pygame.Rect(c[0] - self.radius, c[1] - self.radius, self.diameter, self.diameter)
             if c_rect.colliderect(player.rectangle):
                 player.add_to_wealth(c[2])
                 coins.remove(c)

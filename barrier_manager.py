@@ -1,19 +1,24 @@
 import pygame
 
 class BarrierManager:
-    
+
+    """
+    Constructor
+    """
+    def __init__(self):
+        self.colour = (40, 26, 13) 
+        
     """
     Place the barriers on the screen
     """
-    def draw(screen, barriers):
-        colour = (40, 26, 13)
+    def draw(self, screen, barriers):
         for b in barriers:
-            pygame.draw.rect(screen, colour, b)
+            pygame.draw.rect(screen, self.colour, b)
 
     """
     Level 1 Barriers
     """
-    def level1():
+    def level1(self):
         barriers = []
         barriers.append([0, 70, 600, 10]) # 1
         barriers.append([0, 145, 420, 10]) # 2
@@ -28,7 +33,7 @@ class BarrierManager:
     """
     Level 2 Barriers
     """
-    def level2():
+    def level2(self):
         barriers = []
         barriers.append([105, 110, 305, 10]) # 1
         barriers.append([410, 70, 200, 10]) # 2
@@ -49,7 +54,7 @@ class BarrierManager:
     """
     Level 3 Barriers
     """
-    def level3():
+    def level3(self):
         barriers = []
         barriers.append([90, 0, 10, 233]) # 1
         barriers.append([180, 70, 10, 233]) # 2
@@ -69,7 +74,7 @@ class BarrierManager:
     """
     Level 4 Barriers
     """
-    def level4():
+    def level4(self):
         barriers = []
         barriers.append([0, 70, 155, 10]) # 1
         barriers.append([250, 0, 10, 80]) # 2
@@ -89,7 +94,7 @@ class BarrierManager:
     """
     Level 5 Barriers
     """
-    def level5():
+    def level5(self):
         barriers = []
         barriers.append([0, 70, 300, 10]) # 1
         barriers.append([400, 0, 10, 120]) # 2
@@ -109,7 +114,7 @@ class BarrierManager:
     """
     Level 6 Barriers
     """
-    def level6():
+    def level6(self):
         barriers = []
         barriers.append([80, 70, 195, 10]) # 1
         barriers.append([80, 80, 10, 70]) # 2
@@ -129,7 +134,7 @@ class BarrierManager:
     """
     Level 7 Barriers
     """
-    def level7():
+    def level7(self):
         barriers = []
         barriers.append([80, 70, 10, 250]) # 1
         barriers.append([90, 240, 100, 10]) # 2

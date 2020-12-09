@@ -123,7 +123,7 @@ class Player:
     """
     Remove wealth from the player if they collide with a hole
     """
-    def remove_wealth(self, num, screen, BLACK, BACKGROUND):
+    def remove_wealth(self, num, screen, screen_manager):
         
         # Black hole
         if (num == 1):
@@ -131,9 +131,7 @@ class Player:
 
             # Display "There goes $50" message
             if (self.wealth >= 0):
-                font = pygame.font.Font('freesansbold.ttf', 90)
-                msg = font.render("There goes $50", True, BLACK, BACKGROUND)
-                self.display_message_time_period(screen, msg, 350, 233, 3)
+                screen_manager.display_message_lost_wealth(screen)
 
         # Red hole
         if (num == 2):
@@ -141,75 +139,5 @@ class Player:
 
         # Display "Back to Level 1" message
         if self.wealth < 0:
-            font = pygame.font.Font('freesansbold.ttf', 90)
-            msg = font.render("Back to Level 1", True, BLACK, BACKGROUND)
-            self.display_message_time_period(screen, msg, 350, 233, 3)
-
-    """
-    Display the player's wealth and current level at the top of the screen
-    """
-    def display_wealth_and_level(self, screen, level, BLACK, BACKGROUND):
-        font = pygame.font.Font('freesansbold.ttf', 16)
-        wealth = font.render("Wealth: $" + str(self.wealth), True, BLACK, BACKGROUND)
-        self.display_text(screen, wealth, 175, 10)
-        level = font.render("Level: " + str(level), True, BLACK, BACKGROUND)
-        self.display_text(screen, level, 525, 10)
-
-    """
-    Display the given message on the screen
-    """
-    def display_text(self, screen, msg, x, y):
-        rect = msg.get_rect()
-        rect.center = (x, y)
-        screen.blit(msg, rect)
-
-    """
-    Display the given message on the screen for a specified time period
-    """
-    def display_message_time_period(self, screen, msg, x, y, duration):
-        start_time = int(round(time.time()))
-        while ((start_time + duration) > int(round(time.time()))):
-                self.display_text(screen, msg, x, y)
-                pygame.display.update()
-        
-    """ 
-    Warn the player that black holes steal $50
-    """
-    def black_hole_warning(self, screen, BLACK, BACKGROUND):
-        font = pygame.font.Font('freesansbold.ttf', 32)
-        msg = font.render("Black Holes Steal $50", True, BLACK, BACKGROUND)
-        small_font = pygame.font.Font('freesansbold.ttf', 16)
-        small_msg = small_font.render("If you go below $0, you go back to Level 1", True, BLACK, BACKGROUND)
-        self.display_hole_waring(screen, msg, small_msg, BLACK, BACKGROUND)
-
-    """ 
-    Warn the player that red holes steal all your money and send you back to level 1
-    """
-    def red_hole_warning(self, screen, BLACK, RED, BACKGROUND):
-        font = pygame.font.Font('freesansbold.ttf', 32)
-        msg = font.render("Red Holes Steal All Your Money", True, BLACK, BACKGROUND)
-        small_font = pygame.font.Font('freesansbold.ttf', 16)
-        small_msg = small_font.render("You go back to Level 1", True, BLACK, BACKGROUND)
-        self.display_hole_waring(screen, msg, small_msg, RED, BACKGROUND)
-
-    """ 
-    Given the messages to be displayed warning the player about the holes, 
-    put these messages on the screen
-    """
-    def display_hole_waring(self, screen, msg, small_msg, COLOUR, BACKGROUND):
-        start_time = int(round(time.time()))
-        while ((start_time + 6) > int(round(time.time()))):
-            screen.fill(BACKGROUND)
-            pygame.draw.circle(screen, COLOUR, [350, 116], 30)
-            self.display_text(screen, msg, 350, 233)
-            self.display_text(screen, small_msg, 350, 280)
-            pygame.display.update()
-
-    """
-    Display "You Win!" message on the screen and then exit the game
-    """
-    def game_is_completed(self, screen, BLACK, BACKGROUND):
-        font = pygame.font.Font('freesansbold.ttf', 32)
-        msg = font.render("You Win!", True, BLACK, BACKGROUND)
-        screen.fill(BACKGROUND)
-        self.display_message_time_period(screen, msg, 350, 233, 3)
+            screen_manager.display_back_to_level1(screen)
+           

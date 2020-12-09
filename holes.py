@@ -86,9 +86,9 @@ class Holes:
     If a player has collided with a hole, remove it from the screen and 
     subtract wealth from the player
     """
-    def player_has_reached(self, player, holes, screen, BLACK, BACKGROUND):
+    def player_has_reached(self, player, holes, screen, screen_manager):
         for h in holes:
             h_rect = pygame.Rect(h[0] - self.radius, h[1] - self.radius, self.diameter, self.diameter)
             if h_rect.colliderect(player.rectangle):
-                player.remove_wealth(h[2], screen, BLACK, BACKGROUND)
+                player.remove_wealth(h[2], screen, screen_manager)
                 holes.remove(h)
