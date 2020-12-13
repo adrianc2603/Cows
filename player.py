@@ -106,19 +106,20 @@ class Player:
     """
     Add wealth to the player if they pick up coins
     """
-    def add_to_wealth(self, num):
+    def add_to_wealth(self, value):
+        self.wealth += value
 
-        # Gold coin
-        if num == 3:
-            self.wealth += 5
+        # # Gold coin
+        # if num == 3:
+        #     self.wealth += 5
 
-        # Silver coin
-        if num == 2:
-            self.wealth += 3
+        # # Silver coin
+        # if num == 2:
+        #     self.wealth += 3
 
-        # Bronze coin
-        if num == 1:
-            self.wealth += 1
+        # # Bronze coin
+        # if num == 1:
+        #     self.wealth += 1
 
     """
     Remove wealth from the player if they collide with an enemy

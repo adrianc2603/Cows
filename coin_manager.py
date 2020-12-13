@@ -1,4 +1,5 @@
 import pygame
+import coin
 
 class CoinManager:
 
@@ -9,26 +10,13 @@ class CoinManager:
         self.gold = (212, 175, 55)
         self.silver = (192, 192, 192)
         self.bronze = (80, 50, 20)
-        self.radius = 15
-        self.diameter = 30
 
     """
     Place all coins on the screen
     """
     def draw(self, screen, coins):
         for c in coins:
-
-            # Gold coins
-            if c[2] == 3: 
-                pygame.draw.circle(screen, self.gold, [c[0], c[1]], self.radius)
-
-            # Silver coins
-            if c[2] == 2:
-                pygame.draw.circle(screen, self.silver, [c[0], c[1]], self.radius)
-
-            # Bronze coins
-            if c[2] == 1:
-                pygame.draw.circle(screen, self.bronze, [c[0], c[1]], self.radius)
+            pygame.draw.circle(screen, c.colour, [c.x, c.y], c.radius)
 
     """
     Level 1 Coins
@@ -37,36 +25,36 @@ class CoinManager:
         coins = []
 
         # Row 1
-        coins.append([150, 35, 3])
-        coins.append([350, 35, 2])
-        coins.append([550, 35, 1])
+        coins.append(coin.Coin(150, 35, self.gold))
+        coins.append(coin.Coin(350, 35, self.silver))
+        coins.append(coin.Coin(550, 35, self.bronze))
 
         # Row 2
-        coins.append([50, 115, 3])
-        coins.append([250, 115, 2])
-        coins.append([450, 115, 1])
-        coins.append([650, 115, 3])
+        coins.append(coin.Coin(50, 115, self.gold))
+        coins.append(coin.Coin(250, 115, self.silver))
+        coins.append(coin.Coin(450, 115, self.bronze))
+        coins.append(coin.Coin(650, 115, self.gold))
 
         # Row 3
-        coins.append([150, 195, 3])
-        coins.append([350, 195, 2])
-        coins.append([550, 195, 1])
+        coins.append(coin.Coin(150, 195, self.gold))
+        coins.append(coin.Coin(350, 195, self.silver))
+        coins.append(coin.Coin(550, 195, self.bronze))
 
         # Row 4
-        coins.append([50, 275, 3])
-        coins.append([250, 275, 1])
-        coins.append([450, 275, 2])
-        coins.append([650, 275, 3])
+        coins.append(coin.Coin(50, 275, self.gold))
+        coins.append(coin.Coin(250, 275, self.bronze))
+        coins.append(coin.Coin(450, 275, self.silver))
+        coins.append(coin.Coin(650, 275, self.gold))
 
         # Row 5
-        coins.append([150, 355, 2])
-        coins.append([350, 355, 3])
-        coins.append([550, 355, 3])
+        coins.append(coin.Coin(150, 355, self.silver))
+        coins.append(coin.Coin(350, 355, self.gold))
+        coins.append(coin.Coin(550, 355, self.gold))
 
         # Row 6
-        coins.append([50, 435, 1])
-        coins.append([250, 435, 2])
-        coins.append([450, 435, 3])
+        coins.append(coin.Coin(50, 435, self.bronze))
+        coins.append(coin.Coin(250, 435, self.silver))
+        coins.append(coin.Coin(450, 435, self.gold))
 
         return coins
 
@@ -77,30 +65,30 @@ class CoinManager:
         coins = []
 
         # Row 1
-        coins.append([55, 40, 1])
-        coins.append([300, 40, 1])
-        coins.append([550, 40, 2])
+        coins.append(coin.Coin(55, 40, self.bronze))
+        coins.append(coin.Coin(300, 40, self.bronze))
+        coins.append(coin.Coin(550, 40, self.silver))
 
         # Row 2
-        coins.append([200, 155, 3])
-        coins.append([320, 155, 3])
-        coins.append([465, 120, 2])
-        coins.append([655, 175, 2])
+        coins.append(coin.Coin(200, 155, self.gold))
+        coins.append(coin.Coin(320, 155, self.gold))
+        coins.append(coin.Coin(465, 120, self.silver))
+        coins.append(coin.Coin(655, 175, self.silver))
 
         # Row 3
-        coins.append([55, 240, 1])
-        coins.append([165, 240, 1])
-        coins.append([320, 240, 3])
-        coins.append([560, 240, 3])
+        coins.append(coin.Coin(55, 240, self.bronze))
+        coins.append(coin.Coin(165, 240, self.bronze))
+        coins.append(coin.Coin(320, 240, self.gold))
+        coins.append(coin.Coin(560, 240, self.gold))
 
         # Row 4
-        coins.append([160, 375, 2])
-        coins.append([465, 325, 2])
-        coins.append([560, 325, 3])
+        coins.append(coin.Coin(160, 375, self.silver))
+        coins.append(coin.Coin(465, 325, self.silver))
+        coins.append(coin.Coin(560, 325, self.gold))
 
         # Row 5
-        coins.append([260, 430, 1])
-        coins.append([500, 420, 3])
+        coins.append(coin.Coin(260, 430, self.bronze))
+        coins.append(coin.Coin(500, 420, self.gold))
 
         return coins
 
@@ -111,36 +99,36 @@ class CoinManager:
         coins = []
 
         # Row 1
-        coins.append([45, 40, 3])
-        coins.append([230, 40, 3])
-        coins.append([380, 40, 2])
-        coins.append([540, 40, 1])
+        coins.append(coin.Coin(45, 40, self.gold))
+        coins.append(coin.Coin(230, 40, self.gold))
+        coins.append(coin.Coin(380, 40, self.silver))
+        coins.append(coin.Coin(540, 40, self.bronze))
 
         # Row 2
-        coins.append([45, 120, 2])
-        coins.append([360, 115, 3])
-        coins.append([520, 115, 3])
+        coins.append(coin.Coin(45, 120, self.silver))
+        coins.append(coin.Coin(360, 115, self.gold))
+        coins.append(coin.Coin(520, 115, self.gold))
 
         # Row 3
-        coins.append([45, 200, 1])
-        coins.append([140, 200, 2])
-        coins.append([360, 195, 3])
-        coins.append([520, 195, 3])
+        coins.append(coin.Coin(45, 200, self.bronze))
+        coins.append(coin.Coin(140, 200, self.silver))
+        coins.append(coin.Coin(360, 195, self.gold))
+        coins.append(coin.Coin(520, 195, self.gold))
 
         # Row 4
-        coins.append([440, 275, 1])
-        coins.append([630, 260, 3])
+        coins.append(coin.Coin(440, 275, self.bronze))
+        coins.append(coin.Coin(630, 260, self.gold))
 
         # Row 5
-        coins.append([230, 345, 3])
-        coins.append([440, 355, 2])
-        coins.append([630, 355, 1])
+        coins.append(coin.Coin(230, 345, self.gold))
+        coins.append(coin.Coin(440, 355, self.silver))
+        coins.append(coin.Coin(630, 355, self.bronze))
 
         # Row 6
-        coins.append([45, 425, 3])
-        coins.append([210, 430, 2])
-        coins.append([365, 430, 1])
-        coins.append([535, 410, 1])
+        coins.append(coin.Coin(45, 425, self.gold))
+        coins.append(coin.Coin(210, 430, self.silver))
+        coins.append(coin.Coin(365, 430, self.bronze))
+        coins.append(coin.Coin(535, 410, self.bronze))
 
         return coins
 
@@ -151,38 +139,38 @@ class CoinManager:
         coins = []
 
         # Row 1
-        coins.append([400, 35, 2])
-        coins.append([550, 35, 2])
+        coins.append(coin.Coin(400, 35, self.silver))
+        coins.append(coin.Coin(550, 35, self.silver))
 
         # Row 2
-        coins.append([50, 112, 3])
-        coins.append([180, 112, 3])
-        coins.append([330, 115, 3])
-        coins.append([490, 130, 2])
-        coins.append([630, 130, 1])
+        coins.append(coin.Coin(50, 112, self.gold))
+        coins.append(coin.Coin(180, 112, self.gold))
+        coins.append(coin.Coin(330, 115, self.gold))
+        coins.append(coin.Coin(490, 130, self.silver))
+        coins.append(coin.Coin(630, 130, self.bronze))
 
         # Row 3
-        coins.append([42, 190, 3])
-        coins.append([130, 190, 3])
-        coins.append([645, 230, 1])
+        coins.append(coin.Coin(42, 190, self.gold))
+        coins.append(coin.Coin(130, 190, self.gold))
+        coins.append(coin.Coin(645, 230, self.bronze))
 
         # Row 4
-        coins.append([42, 270, 3])
-        coins.append([160, 268, 2])
-        coins.append([310, 268, 1])
-        coins.append([540, 300, 3])
+        coins.append(coin.Coin(42, 270, self.gold))
+        coins.append(coin.Coin(160, 268, self.silver))
+        coins.append(coin.Coin(310, 268, self.bronze))
+        coins.append(coin.Coin(540, 300, self.gold))
 
         # Row 5
-        coins.append([42, 350, 3])
-        coins.append([160, 345, 2])
-        coins.append([310, 345, 1])
-        coins.append([540, 345, 3])
-        coins.append([645, 330, 1])
+        coins.append(coin.Coin(42, 350, self.gold))
+        coins.append(coin.Coin(160, 345, self.silver))
+        coins.append(coin.Coin(310, 345, self.bronze))
+        coins.append(coin.Coin(540, 345, self.gold))
+        coins.append(coin.Coin(645, 330, self.bronze))
 
         # Row 6
-        coins.append([190, 425, 3])
-        coins.append([340, 425, 3])
-        coins.append([490, 425, 3])
+        coins.append(coin.Coin(190, 425, self.gold))
+        coins.append(coin.Coin(340, 425, self.gold))
+        coins.append(coin.Coin(490, 425, self.gold))
 
         return coins
 
@@ -193,38 +181,38 @@ class CoinManager:
         coins = []
 
         # Row 1
-        coins.append([50, 35, 3])
-        coins.append([150, 35, 2])
-        coins.append([250, 35, 1])
-        coins.append([470, 35, 3])
-        coins.append([570, 35, 3])
-        coins.append([470, 80, 3])
-        coins.append([570, 80, 3])
+        coins.append(coin.Coin(50, 35, self.gold))
+        coins.append(coin.Coin(150, 35, self.silver))
+        coins.append(coin.Coin(250, 35, self.bronze))
+        coins.append(coin.Coin(470, 35, self.gold))
+        coins.append(coin.Coin(570, 35, self.gold))
+        coins.append(coin.Coin(470, 80, self.gold))
+        coins.append(coin.Coin(570, 80, self.gold))
 
         # Row 2
-        coins.append([100, 135, 2])
-        coins.append([250, 135, 2])
-        coins.append([460, 152, 1])
-        coins.append([560, 152, 1])
+        coins.append(coin.Coin(100, 135, self.silver))
+        coins.append(coin.Coin(250, 135, self.silver))
+        coins.append(coin.Coin(460, 152, self.bronze))
+        coins.append(coin.Coin(560, 152, self.bronze))
 
         # Row 3
-        coins.append([180, 230, 1])
-        coins.append([345, 230, 1])
+        coins.append(coin.Coin(180, 230, self.bronze))
+        coins.append(coin.Coin(345, 230, self.bronze))
 
         # Row 4
-        coins.append([75, 325, 1])
-        coins.append([200, 300, 3])
-        coins.append([200, 350, 3])
-        coins.append([570, 300, 2])
-        coins.append([570, 350, 2])
-        coins.append([655, 300, 3])
+        coins.append(coin.Coin(75, 325, self.bronze))
+        coins.append(coin.Coin(200, 300, self.gold))
+        coins.append(coin.Coin(200, 350, self.gold))
+        coins.append(coin.Coin(570, 300, self.silver))
+        coins.append(coin.Coin(570, 350, self.silver))
+        coins.append(coin.Coin(655, 300, self.gold))
 
         # Row 5
-        coins.append([150, 422, 3])
-        coins.append([250, 408, 3])
-        coins.append([250, 444, 3])
-        coins.append([560, 422, 1])
-        coins.append([655, 380, 2])
+        coins.append(coin.Coin(150, 422, self.gold))
+        coins.append(coin.Coin(250, 408, self.gold))
+        coins.append(coin.Coin(250, 444, self.gold))
+        coins.append(coin.Coin(560, 422, self.bronze))
+        coins.append(coin.Coin(655, 380, self.silver))
 
         return coins
 
@@ -235,33 +223,33 @@ class CoinManager:
         coins = []
 
         # Row 1
-        coins.append([45, 35, 1])
-        coins.append([220, 35, 1])
+        coins.append(coin.Coin(45, 35, self.bronze))
+        coins.append(coin.Coin(220, 35, self.bronze))
 
         # Row 2
-        coins.append([130, 120, 3])
-        coins.append([325, 115, 3])
-        coins.append([435, 115, 3])
+        coins.append(coin.Coin(130, 120, self.gold))
+        coins.append(coin.Coin(325, 115, self.gold))
+        coins.append(coin.Coin(435, 115, self.gold))
 
         # Row 3
-        coins.append([40, 280, 1])
-        coins.append([130, 225, 2])
-        coins.append([235, 200, 3])
-        coins.append([655, 280, 1])
+        coins.append(coin.Coin(40, 280, self.bronze))
+        coins.append(coin.Coin(130, 225, self.silver))
+        coins.append(coin.Coin(235, 200, self.gold))
+        coins.append(coin.Coin(655, 280, self.bronze))
 
         # Row 4
-        coins.append([40, 356, 2])
-        coins.append([130, 356, 1])
-        coins.append([255, 356, 2])
-        coins.append([540, 356, 2])
-        coins.append([655, 356, 2])
+        coins.append(coin.Coin(40, 356, self.silver))
+        coins.append(coin.Coin(130, 356, self.bronze))
+        coins.append(coin.Coin(255, 356, self.silver))
+        coins.append(coin.Coin(540, 356, self.silver))
+        coins.append(coin.Coin(655, 356, self.silver))
 
         # Row 5
-        coins.append([40, 432, 3])
-        coins.append([255, 432, 1])
-        coins.append([385, 432, 2])
-        coins.append([540, 432, 3])
-        coins.append([655, 432, 3])
+        coins.append(coin.Coin(40, 432, self.gold))
+        coins.append(coin.Coin(255, 432, self.bronze))
+        coins.append(coin.Coin(385, 432, self.silver))
+        coins.append(coin.Coin(540, 432, self.gold))
+        coins.append(coin.Coin(655, 432, self.gold))
 
         return coins
 
@@ -272,32 +260,32 @@ class CoinManager:
         coins = []
 
         # Row 1
-        coins.append([195, 35, 2])
-        coins.append([333, 35, 3])
-        coins.append([635, 35, 2])
+        coins.append(coin.Coin(195, 35, self.silver))
+        coins.append(coin.Coin(333, 35, self.gold))
+        coins.append(coin.Coin(635, 35, self.silver))
 
         # Row 2
-        coins.append([142, 110, 3])
-        coins.append([410, 118, 3])
-        coins.append([510, 118, 3])
-        coins.append([640, 148, 1])
+        coins.append(coin.Coin(142, 110, self.gold))
+        coins.append(coin.Coin(410, 118, self.gold))
+        coins.append(coin.Coin(510, 118, self.gold))
+        coins.append(coin.Coin(640, 148, self.bronze))
 
         # Row 3
-        coins.append([380, 200, 2])
-        coins.append([510, 200, 3])
+        coins.append(coin.Coin(380, 200, self.silver))
+        coins.append(coin.Coin(510, 200, self.gold))
        
         # Row 4
-        coins.append([245, 280, 1])
-        coins.append([445, 265, 1])
-        coins.append([635, 260, 2])
+        coins.append(coin.Coin(245, 280, self.bronze))
+        coins.append(coin.Coin(445, 265, self.bronze))
+        coins.append(coin.Coin(635, 260, self.silver))
 
         # Row 5
-        coins.append([45, 352, 2])
-        coins.append([445, 352, 3])
+        coins.append(coin.Coin(45, 352, self.silver))
+        coins.append(coin.Coin(445, 352, self.gold))
 
         # Row 6
-        coins.append([245, 430, 1])
-        coins.append([658, 430, 2])
+        coins.append(coin.Coin(245, 430, self.bronze))
+        coins.append(coin.Coin(658, 430, self.silver))
 
         return coins
 
@@ -307,7 +295,6 @@ class CoinManager:
     """
     def player_has_reached(self, player, coins):
         for c in coins:
-            c_rect = pygame.Rect(c[0] - self.radius, c[1] - self.radius, self.diameter, self.diameter)
-            if c_rect.colliderect(player.rectangle):
-                player.add_to_wealth(c[2])
+            if c.rectangle.colliderect(player.rectangle):
+                player.add_to_wealth(c.value)
                 coins.remove(c)
