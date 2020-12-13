@@ -39,36 +39,37 @@ class ScreenManager:
                 pygame.display.update()
         
     """ 
-    Warn the player that black holes steal $50
+    Warn the player that blue enemies steal $50
     """
-    def black_hole_warning(self, screen, BLACK):
-        msg = self.big_font.render("Black Holes Steal $50", True, self.text_colour, self.text_background)
+    def blue_enemy_warning(self, screen):
+        msg = self.big_font.render("Blue Enemies Steal $50", True, self.text_colour, self.text_background)
         small_msg = self.small_font.render("If you go below $0, you go back to Level 1", True, self.text_colour, self.text_background)
-        self.display_hole_waring(screen, msg, small_msg, BLACK)
+        self.display_enemy_warning(screen, msg, small_msg, pygame.image.load("resources/blue_enemy.png"))
 
     """ 
-    Warn the player that red holes steal all your money and send you back to level 1
+    Warn the player that red enemies steal all your money and send you back to level 1
     """
-    def red_hole_warning(self, screen, RED):
-        msg = self.big_font.render("Red Holes Steal All Your Money", True, self.text_colour, self.text_background)
+    def red_enemy_warning(self, screen):
+        msg = self.big_font.render("Red Enemies Steal All Your Money", True, self.text_colour, self.text_background)
         small_msg = self.small_font.render("You go back to Level 1", True, self.text_colour, self.text_background)
-        self.display_hole_waring(screen, msg, small_msg, RED)
+        self.display_enemy_warning(screen, msg, small_msg, pygame.image.load("resources/red_enemy.png"))
 
     """ 
-    Given the messages to be displayed warning the player about the holes, 
+    Given the messages to be displayed warning the player about the enemies, 
     put these messages on the screen
     """
-    def display_hole_waring(self, screen, msg, small_msg, COLOUR):
+    def display_enemy_warning(self, screen, msg, small_msg, image):
         start_time = int(round(time.time()))
         while ((start_time + 6) > int(round(time.time()))):
             screen.fill(self.text_background)
-            pygame.draw.circle(screen, COLOUR, [350, 116], 30)
+            # pygame.draw.circle(screen, COLOUR, [350, 116], 30)
+            screen.blit(image, (320, 86))
             self.display_text(screen, msg, 350, 233)
             self.display_text(screen, small_msg, 350, 280)
             pygame.display.update()
 
     """
-    Display this message when a player loses $50 by colliding with a black hole
+    Display this message when a player loses $50 by colliding with a blue enemy
     """
     def display_message_lost_wealth(self, screen):
         font = pygame.font.Font('freesansbold.ttf', 90)
@@ -76,7 +77,7 @@ class ScreenManager:
         self.display_message_time_period(screen, msg, 350, 233, 3)
 
     """
-    Display this message when a player goes back to level 1 by colliding with a red hole
+    Display this message when a player goes back to level 1 by colliding with a red enemy
     """
     def display_back_to_level1(self, screen):
         font = pygame.font.Font('freesansbold.ttf', 90)

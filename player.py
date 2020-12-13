@@ -121,20 +121,20 @@ class Player:
             self.wealth += 1
 
     """
-    Remove wealth from the player if they collide with a hole
+    Remove wealth from the player if they collide with an enemy
     """
-    def remove_wealth(self, num, screen, screen_manager):
+    def remove_wealth(self, enemy_image_path, screen, screen_manager):
         
-        # Black hole
-        if (num == 1):
+        # Blue enemy
+        if (enemy_image_path == "resources/blue_enemy.png"):
             self.wealth -= 50 
 
             # Display "There goes $50" message
             if (self.wealth >= 0):
                 screen_manager.display_message_lost_wealth(screen)
 
-        # Red hole
-        if (num == 2):
+        # Red enemy
+        if (enemy_image_path == "resources/red_enemy.png"):
             self.wealth = -1
 
         # Display "Back to Level 1" message

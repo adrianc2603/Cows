@@ -15,7 +15,7 @@ class CoinManager:
     """
     Place all coins on the screen
     """
-    def draw(self, screen, coins, player):
+    def draw(self, screen, coins):
         for c in coins:
 
             # Gold coins
