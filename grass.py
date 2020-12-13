@@ -7,9 +7,9 @@ class Grass:
     """
     def __init__(self):
         self.image = pygame.image.load("resources/grass.png")
-        self.rectangle = self.image.get_rect()
-        self.x = self.rectangle.left = 600
-        self.y = self.rectangle.top = 410
+        self.x = 600
+        self.y = 410
+        self.update_rectangle()
 
     """
     Level 1 Postion
@@ -31,8 +31,8 @@ class Grass:
     Level 3 Postion
     """
     def level3(self):
-        self.x = 580
-        self.y = 90
+        self.x = 580 
+        self.y = 90 
         self.update_rectangle()
 
     """
@@ -50,7 +50,6 @@ class Grass:
         self.x = 600
         self.y = 207
         self.update_rectangle()
-        self.rectangle.bottom -= 20 # Approach grass from bottom
 
     """
     Level 6 Postion
@@ -67,14 +66,12 @@ class Grass:
         self.x = 87
         self.y = 195
         self.update_rectangle()
-        self.rectangle.left = self.x # Can't approach from either side
 
     """
     Update the position of the grass's rectangle
     """
     def update_rectangle(self):
-        self.rectangle.left = self.x + 20
-        self.rectangle.top = self.y + 10
+        self.rectangle = pygame.Rect(self.x + 20, self.y + 10, 54, 20)
 
     """
     Return 1 if the player has reached the grass. Return 0 otherwise
