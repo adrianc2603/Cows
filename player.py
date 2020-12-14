@@ -9,8 +9,8 @@ class Player:
     def __init__(self):
         self.image = pygame.image.load("resources/player.png")
         self.rectangle = self.image.get_rect()
-        self.x = self.rectangle.left = 10
-        self.y = self.rectangle.top = 10
+        self.x = 10
+        self.y = 5
         self.velocity = 2 
         self.wealth = 0
 
@@ -72,15 +72,14 @@ class Player:
         no_left = no_right = no_up = no_down = False
         tolerance = 2
         for b in barriers:
-            b_rect = pygame.Rect(b[0], b[1], b[2], b[3])
-            if b_rect.colliderect(self.rectangle):
-                if abs(b_rect.right - self.rectangle.left) <= tolerance:
+            if b.rectangle.colliderect(self.rectangle):
+                if abs(b.rectangle.right - self.rectangle.left) <= tolerance:
                     no_left = True
-                if abs(b_rect.left - self.rectangle.right) <= tolerance:
+                if abs(b.rectangle.left - self.rectangle.right) <= tolerance:
                     no_right = True
-                if abs(b_rect.bottom - self.rectangle.top) <= tolerance:
+                if abs(b.rectangle.bottom - self.rectangle.top) <= tolerance:
                     no_up = True
-                if abs(b_rect.top - self.rectangle.bottom) <= tolerance:
+                if abs(b.rectangle.top - self.rectangle.bottom) <= tolerance:
                     no_down = True
 
         # Move player the correct direction
@@ -108,18 +107,6 @@ class Player:
     """
     def add_to_wealth(self, value):
         self.wealth += value
-
-        # # Gold coin
-        # if num == 3:
-        #     self.wealth += 5
-
-        # # Silver coin
-        # if num == 2:
-        #     self.wealth += 3
-
-        # # Bronze coin
-        # if num == 1:
-        #     self.wealth += 1
 
     """
     Remove wealth from the player if they collide with an enemy

@@ -45,12 +45,12 @@ barriers = []
 coin_manager = coin_manager.CoinManager()
 coins = []
 
-#Initialise screen manager
-screen_manager = screen_manager.ScreenManager()
-
 # Initialise enemy manager
 enemy_manager = enemy_manager.EnemyManager()
 enemies = []
+
+# Initialise screen manager
+screen_manager = screen_manager.ScreenManager()
 
 # Set initial level
 level = 1 ##============================================================================================

@@ -62,7 +62,6 @@ class ScreenManager:
         start_time = int(round(time.time()))
         while ((start_time + 6) > int(round(time.time()))):
             screen.fill(self.text_background)
-            # pygame.draw.circle(screen, COLOUR, [350, 116], 30)
             screen.blit(image, (320, 86))
             self.display_text(screen, msg, 350, 233)
             self.display_text(screen, small_msg, 350, 280)
