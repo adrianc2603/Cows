@@ -68,6 +68,14 @@ class Grass:
         self.update_rectangle()
 
     """
+    Level 8 Postion
+    """
+    def level8(self):
+        self.x = 252
+        self.y = 115
+        self.update_rectangle()
+
+    """
     Update the position of the grass's rectangle
     """
     def update_rectangle(self):

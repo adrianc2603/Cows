@@ -21,7 +21,7 @@ import enemy_manager
 import screen_manager
 
 # GLOBAL VARIABLES
-LAST_LEVEL = 10 ##============================================================================================
+LAST_LEVEL = 10 
 BACKGROUND = (124, 252 , 0)
 
 # Initialise pygame and the screen
@@ -50,7 +50,7 @@ enemy_manager = enemy_manager.EnemyManager()
 enemies = []
 
 # Initialise screen manager
-screen_manager = screen_manager.ScreenManager()
+screen_manager = screen_manager.ScreenManager(BACKGROUND)
 
 # Set initial level
 level = 1 ##============================================================================================
@@ -127,6 +127,15 @@ while running:
         barriers = barrier_manager.level7()
         coins = coin_manager.level7()
         enemies = enemy_manager.level7()
+        new_level = False
+
+    # Set up level 8
+    if level == 8 and new_level:
+        player.level8()
+        grass.level8()
+        barriers = barrier_manager.level8()
+        coins = coin_manager.level8()
+        enemies = enemy_manager.level8()
         new_level = False
 
     # Set screen colour as green

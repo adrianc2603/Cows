@@ -6,9 +6,9 @@ class ScreenManager:
     """
     Constructor
     """
-    def __init__(self):
+    def __init__(self, BACKGROUND):
         self.text_colour = (0, 0, 0) # Black
-        self.text_background = (124, 252 , 0) # Screen background
+        self.text_background = BACKGROUND 
         self.big_font = pygame.font.Font('freesansbold.ttf', 32)
         self.small_font = pygame.font.Font('freesansbold.ttf', 16)
 

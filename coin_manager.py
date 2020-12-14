@@ -290,6 +290,43 @@ class CoinManager:
         return coins
 
     """
+    Level 8 Coins
+    """
+    def level8(self):
+        coins = []
+
+        # Row 1
+        coins.append(coin.Coin(130, 35, self.silver))
+        coins.append(coin.Coin(425, 40, self.silver))
+        coins.append(coin.Coin(645, 40, self.bronze))
+
+        # Row 2
+        coins.append(coin.Coin(395, 130, self.bronze))
+        coins.append(coin.Coin(460, 130, self.bronze))
+        coins.append(coin.Coin(645, 130, self.silver))
+
+        # Row 3
+        coins.append(coin.Coin(48, 210, self.gold))
+        coins.append(coin.Coin(645, 250, self.bronze))
+       
+        # Row 4
+        coins.append(coin.Coin(48, 280, self.gold))
+        coins.append(coin.Coin(178, 280, self.gold))
+        coins.append(coin.Coin(300, 280, self.gold))
+
+        # # Row 5
+        coins.append(coin.Coin(48, 350, self.gold))
+        coins.append(coin.Coin(178, 350, self.gold))
+        coins.append(coin.Coin(300, 350, self.gold))
+
+        # Row 6
+        coins.append(coin.Coin(48, 420, self.gold))
+        coins.append(coin.Coin(178, 420, self.gold))
+        coins.append(coin.Coin(300, 420, self.gold))
+
+        return coins    
+
+    """
     If a player has collected a coin, remove it from the screen and add 
     the coin's worth to the player's wealth
     """

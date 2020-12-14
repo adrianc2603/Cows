@@ -64,6 +64,13 @@ class Player:
         self.y = 255
 
     """
+    Level 8 Postion
+    """
+    def level8(self):
+        self.x = 140
+        self.y = 175
+
+    """
     Move the player if there is no barrier in the way
     """
     def move(self, barriers):
