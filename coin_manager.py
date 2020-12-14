@@ -314,7 +314,7 @@ class CoinManager:
         coins.append(coin.Coin(178, 280, self.gold))
         coins.append(coin.Coin(300, 280, self.gold))
 
-        # # Row 5
+        # Row 5
         coins.append(coin.Coin(48, 350, self.gold))
         coins.append(coin.Coin(178, 350, self.gold))
         coins.append(coin.Coin(300, 350, self.gold))
@@ -325,6 +325,41 @@ class CoinManager:
         coins.append(coin.Coin(300, 420, self.gold))
 
         return coins    
+
+    """
+    Level 9 Coins
+    """
+    def level9(self):
+        coins = []
+
+        # Row 1
+        coins.append(coin.Coin(150, 50, self.bronze))
+        coins.append(coin.Coin(280, 50, self.gold))
+        coins.append(coin.Coin(410, 50, self.silver))
+        coins.append(coin.Coin(540, 50, self.gold))
+
+        # Row 2
+        coins.append(coin.Coin(390, 160, self.gold))
+        coins.append(coin.Coin(648, 160, self.silver))
+        
+        # Row 3
+        coins.append(coin.Coin(50, 250, self.gold))
+        coins.append(coin.Coin(145, 250, self.bronze))
+        coins.append(coin.Coin(245, 250, self.gold))
+        coins.append(coin.Coin(544, 250, self.silver))
+       
+        # Row 4
+        coins.append(coin.Coin(340, 325, self.gold))
+        coins.append(coin.Coin(648, 325, self.bronze))
+
+        # Row 5
+        coins.append(coin.Coin(50, 420, self.gold))
+        coins.append(coin.Coin(145, 420, self.gold)) 
+        coins.append(coin.Coin(245, 420, self.silver))
+        coins.append(coin.Coin(444, 420, self.gold)) 
+        coins.append(coin.Coin(544, 420, self.gold))
+
+        return coins        
 
     """
     If a player has collected a coin, remove it from the screen and add 

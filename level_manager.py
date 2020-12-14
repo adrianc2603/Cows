@@ -1,5 +1,3 @@
-import pygame
-
 class LevelManager:
 
     """
@@ -47,6 +45,10 @@ class LevelManager:
             player.level8()
             grass.level8()
 
+        if level == 9:
+            player.level9()
+            grass.level9()
+
     """
     Return the list of barriers for each level level 
     """
@@ -74,6 +76,9 @@ class LevelManager:
 
         if level == 8:
             return barrier_manager.level8()
+
+        if level == 9:
+            return barrier_manager.level9()
 
         return []
 
@@ -105,10 +110,13 @@ class LevelManager:
         if level == 8:
             return coin_manager.level8()
 
+        if level == 9:
+            return coin_manager.level9()    
+
         return []
 
     """
-    Return the list of enemies for each level level 
+    Return the list of coins for each level level 
     """
     def get_level_enemies(self, level, enemy_manager):
         if level == 3:
@@ -129,6 +137,7 @@ class LevelManager:
         if level == 8:
             return enemy_manager.level8()
 
+        if level == 9:
+            return enemy_manager.level9()
+
         return []
-
-

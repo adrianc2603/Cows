@@ -12,7 +12,7 @@ class Grass:
         self.update_rectangle()
 
     """
-    Level 1 Postion
+    Level 1 Position
     """
     def level1(self):
         self.x = 600
@@ -20,7 +20,7 @@ class Grass:
         self.update_rectangle()
 
     """
-    Level 2 Postion
+    Level 2 Position
     """
     def level2(self):
         self.x = 600
@@ -28,7 +28,7 @@ class Grass:
         self.update_rectangle()
 
     """
-    Level 3 Postion
+    Level 3 Position
     """
     def level3(self):
         self.x = 580 
@@ -36,7 +36,7 @@ class Grass:
         self.update_rectangle()
 
     """
-    Level 4 Postion
+    Level 4 Position
     """
     def level4(self):
         self.x = 600
@@ -44,7 +44,7 @@ class Grass:
         self.update_rectangle()
 
     """
-    Level 5 Postion
+    Level 5 Position
     """
     def level5(self):
         self.x = 600
@@ -52,7 +52,7 @@ class Grass:
         self.update_rectangle()
 
     """
-    Level 6 Postion
+    Level 6 Position
     """
     def level6(self):
         self.x = 600
@@ -60,7 +60,7 @@ class Grass:
         self.update_rectangle()
 
     """
-    Level 7 Postion
+    Level 7 Position
     """
     def level7(self):
         self.x = 87
@@ -68,12 +68,20 @@ class Grass:
         self.update_rectangle()
 
     """
-    Level 8 Postion
+    Level 8 Position
     """
     def level8(self):
         self.x = 252
         self.y = 115
         self.update_rectangle()
+
+    """
+    Level 9 Position
+    """
+    def level9(self):
+        self.x = -5
+        self.y = 20
+        self.update_rectangle()    
 
     """
     Update the position of the grass's rectangle

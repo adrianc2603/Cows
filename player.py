@@ -15,60 +15,67 @@ class Player:
         self.wealth = 0
 
     """
-    Level 1 Postion
+    Level 1 Position
     """
     def level1(self):
         self.x = 10
         self.y = 5
 
     """
-    Level 2 Postion
+    Level 2 Position
     """
     def level2(self):
         self.x = 280
         self.y = 290
 
     """
-    Level 3 Postion
+    Level 3 Position
     """
     def level3(self):
         self.x = 10
         self.y = 320
 
     """
-    Level 4 Postion
+    Level 4 Position
     """
     def level4(self):
         self.x = 10
         self.y = 5
 
     """
-    Level 5 Postion
+    Level 5 Position
     """
     def level5(self):
         self.x = 10
         self.y = 198
 
     """
-    Level 6 Postion
+    Level 6 Position
     """
     def level6(self):
         self.x = 310
         self.y = 169
 
     """
-    Level 7 Postion
+    Level 7 Position
     """
     def level7(self):
         self.x = 110
         self.y = 255
 
     """
-    Level 8 Postion
+    Level 8 Position
     """
     def level8(self):
         self.x = 140
         self.y = 175
+
+    """
+    Level 9 Position
+    """
+    def level9(self):
+        self.x = 310
+        self.y = 215
 
     """
     Move the player if there is no barrier in the way

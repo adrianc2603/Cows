@@ -1,17 +1,3 @@
-"""
-#### GETTING PYTHON3 AND PYGAME ON LAPTOP
-Download python3 (3.8)
-python3 -m pip install -U pygame==2.0.0.dev6 --user
-
-#### C0NVERTING PYTHON SCRIPT INTO EXEC FILE --- NOT WORKING ON MAC
-install pyinstaller (pip3 install pyinstaller)
-pyinstaller main.py --onefile --noconsole (in cows directory)
-https://www.youtube.com/watch?v=lTxaran0Cig
-"""
-##=============================================================================
-##                                1mm = 5px
-##=============================================================================
-
 import pygame
 import player
 import grass
@@ -57,7 +43,7 @@ screen_manager = screen_manager.ScreenManager(BACKGROUND)
 level_manager = level_manager.LevelManager()
 
 # Set initial level
-level = 2 ##============================================================================================
+level = 9 ##============================================================================================
 new_level = True
 
 #=============================== MAIN GAMEPLAY ================================

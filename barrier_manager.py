@@ -168,3 +168,21 @@ class BarrierManager:
         barriers.append(barrier.Barrier(585, 410, 10, 60)) # 11
         barriers.append(barrier.Barrier(590, 80, 110, 10)) # 12
         return barriers    
+
+    """
+    Level 9 Barriers
+    """
+    def level9(self):
+        barriers = []
+        barriers.append(barrier.Barrier(90, 80, 10, 300)) # 1
+        barriers.append(barrier.Barrier(190, 120, 10, 250)) # 2
+        barriers.append(barrier.Barrier(190, 110, 400, 10)) # 3
+        barriers.append(barrier.Barrier(590, 110, 10, 260)) # 4
+        barriers.append(barrier.Barrier(590, 450, 10, 50)) # 5
+        barriers.append(barrier.Barrier(390, 370, 10, 150)) # 6
+        barriers.append(barrier.Barrier(290, 280, 100, 10)) # 7
+        barriers.append(barrier.Barrier(290, 200, 10, 80)) # 8
+        barriers.append(barrier.Barrier(300, 200, 200, 10)) # 9
+        barriers.append(barrier.Barrier(490, 210, 10, 160)) # 10
+        barriers.append(barrier.Barrier(300, 360, 190, 10)) # 11
+        return barriers    
