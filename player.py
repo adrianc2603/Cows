@@ -131,10 +131,6 @@ class Player:
         if (enemy_image_path == "resources/blue_enemy.png"):
             self.wealth -= 50 
 
-            # Display "There goes $50" message
-            if (self.wealth >= 0):
-                screen_manager.display_message_lost_wealth(screen)
-
         # Red enemy
         if (enemy_image_path == "resources/red_enemy.png"):
             self.wealth = -1

@@ -43,7 +43,7 @@ screen_manager = screen_manager.ScreenManager(BACKGROUND)
 level_manager = level_manager.LevelManager()
 
 # Set initial level
-level = 9 ##============================================================================================
+level = 1 ##============================================================================================
 new_level = True
 
 #=============================== MAIN GAMEPLAY ================================

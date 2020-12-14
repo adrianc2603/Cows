@@ -68,20 +68,13 @@ class ScreenManager:
             pygame.display.update()
 
     """
-    Display this message when a player loses $50 by colliding with a blue enemy
-    """
-    def display_message_lost_wealth(self, screen):
-        font = pygame.font.Font('freesansbold.ttf', 90)
-        msg = font.render("There goes $50", True, self.text_colour, self.text_background)
-        self.display_message_time_period(screen, msg, 350, 233, 3)
-
-    """
     Display this message when a player goes back to level 1 by colliding with a red enemy
     """
     def display_back_to_level1(self, screen):
-        font = pygame.font.Font('freesansbold.ttf', 90)
-        msg = font.render("Back to Level 1", True, self.text_colour, self.text_background)
+        msg = self.big_font.render("Back to Level 1", True, self.text_colour, self.text_background)
+        screen.fill(self.text_background)
         self.display_message_time_period(screen, msg, 350, 233, 3)
+
 
     """
     Display "You Win!" message on the screen and then exit the game
