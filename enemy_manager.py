@@ -98,6 +98,28 @@ class EnemyManager:
         return enemies
 
     """
+    Level 10 Enemies
+    """
+    def level10(self):
+        enemies = []
+        enemies.append(enemy.Enemy(self.red_image, 12, 175))
+        enemies.append(enemy.Enemy(self.blue_image, 205, 340))
+        enemies.append(enemy.Enemy(self.red_image, 100, 410))
+        enemies.append(enemy.Enemy(self.red_image, 330, 410))
+        enemies.append(enemy.Enemy(self.blue_image, 440, 340))
+        enemies.append(enemy.Enemy(self.red_image, 542, 340))
+        enemies.append(enemy.Enemy(self.blue_image, 100, 20)) 
+        enemies.append(enemy.Enemy(self.blue_image, 220, 20)) 
+        enemies.append(enemy.Enemy(self.blue_image, 340, 20)) 
+        enemies.append(enemy.Enemy(self.blue_image, 460, 20)) 
+        enemies.append(enemy.Enemy(self.blue_image, 580, 20)) 
+        enemies.append(enemy.Enemy(self.blue_image, 630, 100)) 
+        enemies.append(enemy.Enemy(self.blue_image, 630, 200)) 
+        enemies.append(enemy.Enemy(self.blue_image, 630, 300)) 
+        enemies.append(enemy.Enemy(self.blue_image, 630, 400)) 
+        return enemies    
+
+    """
     If a player has collided with an enemy, remove it from the screen and 
     subtract wealth from the player
     """

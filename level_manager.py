@@ -49,6 +49,10 @@ class LevelManager:
             player.level9()
             grass.level9()
 
+        if level == 10:
+            player.level10()
+            grass.level10()    
+
     """
     Return the list of barriers for each level level 
     """
@@ -79,6 +83,9 @@ class LevelManager:
 
         if level == 9:
             return barrier_manager.level9()
+
+        if level == 10:
+            return barrier_manager.level10()    
 
         return []
 
@@ -111,7 +118,10 @@ class LevelManager:
             return coin_manager.level8()
 
         if level == 9:
-            return coin_manager.level9()    
+            return coin_manager.level9()   
+
+        if level == 10:
+            return coin_manager.level10()        
 
         return []
 
@@ -139,5 +149,8 @@ class LevelManager:
 
         if level == 9:
             return enemy_manager.level9()
+
+        if level == 10:
+            return enemy_manager.level10()    
 
         return []

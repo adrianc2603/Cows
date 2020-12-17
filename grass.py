@@ -84,6 +84,14 @@ class Grass:
         self.update_rectangle()    
 
     """
+    Level 10 Position
+    """
+    def level10(self):
+        self.x = 515
+        self.y = 410
+        self.update_rectangle()        
+
+    """
     Update the position of the grass's rectangle
     """
     def update_rectangle(self):
