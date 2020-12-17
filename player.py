@@ -132,14 +132,14 @@ class Player:
     """
     Remove wealth from the player if they collide with an enemy
     """
-    def remove_wealth(self, enemy_image_path, screen, screen_manager):
+    def remove_wealth(self, enemy, screen, screen_manager):
         
         # Blue enemy
-        if (enemy_image_path == "resources/blue_enemy.png"):
+        if (enemy.is_red == False):
             self.wealth -= 50 
 
         # Red enemy
-        if (enemy_image_path == "resources/red_enemy.png"):
+        else:
             self.wealth = -1
 
         # Display "Back to Level 1" message
