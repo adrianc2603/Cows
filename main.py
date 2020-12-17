@@ -25,15 +25,15 @@ pygame.display.set_icon(icon)
 player = player.Player() 
 grass = grass.Grass(player)
 
-# Initialise barrier manager
+# Initialise barrier manager and barriers list
 barrier_manager = barrier_manager.BarrierManager(screen)
 barriers = []
 
-# Initialise coin manager
+# Initialise coin manager and coins list
 coin_manager = coin_manager.CoinManager(screen, player)
 coins = []
 
-# Initialise enemy manager
+# Initialise enemy manager and enemies list
 enemy_manager = enemy_manager.EnemyManager(screen, player)
 enemies = []
 
@@ -50,11 +50,12 @@ time_elapsed = 0
 start_time = int(round(time.time()))
 new_level = True
 
-#=============================== MAIN GAMEPLAY ================================
+# #=============================== MAIN GAMEPLAY ================================
 
 running = True
 while running:
 
+    # Setup the new level
     if new_level:
         level_manager.setup_level(level)
         barriers = level_manager.get_level_barriers(level)
@@ -103,9 +104,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    # Check if player has completed game
+    # If player has completed game, get their name and write their details to scores.txt
     if level > LAST_LEVEL:
         screen_manager.game_is_completed()
+        player_name = screen_manager.get_player_name()
+        f = open("scores.txt", "a")
+        f.write("Name: " + player_name + " ----- Time: " + str(time_elapsed) + " seconds ----- Wealth: $" + str(player.wealth) + "\n\n")
+        f.close
+        screen_manager.display_results(player_name, time_elapsed, player.wealth)
         running = False
 
     # Reset to level 1 if player wealth is below $0

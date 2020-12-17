@@ -87,3 +87,65 @@ class ScreenManager:
         msg = self.big_font.render("You Win!", True, self.text_colour, self.text_background)
         self.screen.fill(self.text_background)
         self.display_message_time_period(msg, 350, 233, 3)
+
+
+    """
+    Let the player enter their name to store their score in scores.txt file
+    """
+    def get_player_name(self):
+        name = ""
+
+        while True:
+
+            self.screen.fill(self.text_background)
+            please_display_name = self.big_font.render("Please enter your name:", True, self.text_colour, self.text_background)
+            self.display_text(please_display_name, 360, 100)
+            name_displayed = self.big_font.render(name, True, self.text_colour, self.text_background)
+            self.display_text(name_displayed, 350, 250)
+            pygame.display.update()
+
+            """
+            Please note this code was found on the following website and was not written by me:
+            https://www.reddit.com/r/pygame/comments/205i05/get_user_input/
+            """
+            event = pygame.event.poll()
+            keys = pygame.key.get_pressed()
+            
+            if event.type == pygame.KEYDOWN:
+                key = pygame.key.name(event.key)  # Returns string id of pressed key.
+                
+                if len(key) == 1:  # This covers all letters and numbers not on numpad.
+                    if keys[pygame.K_LSHIFT] or keys[pygame.K_RSHIFT]:
+                        name += key.upper()
+                    else:
+                        name += key
+                elif key == "backspace":
+                    name = name[:len(name) - 1]
+                elif event.key == pygame.K_RETURN:  # Finished typing.
+                    break
+            """
+            End of copied code
+            """    
+               
+        return name    
+
+    """
+    Once the player finishes the game, display their results of the game
+    """
+    def display_results(self, name, time, wealth):
+        while True:
+            self.screen.fill(self.text_background)
+            name_text = self.big_font.render("Name: " + name, True, self.text_colour, self.text_background)
+            self.display_text(name_text, 340, 100)
+            time_text = self.big_font.render("Time: " + str(time) + " seconds", True, self.text_colour, self.text_background)
+            self.display_text(time_text, 340, 200)
+            wealth_text = self.big_font.render("Wealth: $" + str(wealth), True, self.text_colour, self.text_background)
+            self.display_text(wealth_text, 340, 300)
+            score_location_text = self.small_font.render("You can find this information in the scores.txt file", True, self.text_colour, self.text_background)
+            self.display_text(score_location_text, 340, 400)
+            pygame.display.update()
+
+            # Check if player has pressed exit
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return
