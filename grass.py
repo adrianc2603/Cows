@@ -5,11 +5,12 @@ class Grass:
     """
     Constructor
     """
-    def __init__(self):
+    def __init__(self, player):
         self.image = pygame.image.load("resources/grass.png")
         self.x = 600
         self.y = 410
         self.update_rectangle()
+        self.player = player
 
     """
     Level 1 Position
@@ -100,7 +101,7 @@ class Grass:
     """
     Return 1 if the player has reached the grass. Return 0 otherwise
     """
-    def player_has_reached(self, player):
-        if self.rectangle.colliderect(player.rectangle):
-            return 1
-        return 0
+    def player_has_reached(self):
+        if self.rectangle.colliderect(self.player.rectangle):
+            return True
+        return False

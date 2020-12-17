@@ -22,25 +22,25 @@ pygame.display.set_icon(icon)
 
 # Initialise player and grass objects
 player = player.Player() 
-grass = grass.Grass()
+grass = grass.Grass(player)
 
 # Initialise barrier manager
-barrier_manager = barrier_manager.BarrierManager()
+barrier_manager = barrier_manager.BarrierManager(screen)
 barriers = []
 
 # Initialise coin manager
-coin_manager = coin_manager.CoinManager()
+coin_manager = coin_manager.CoinManager(screen, player)
 coins = []
 
 # Initialise enemy manager
-enemy_manager = enemy_manager.EnemyManager()
+enemy_manager = enemy_manager.EnemyManager(screen, player)
 enemies = []
 
 # Initialise screen manager
-screen_manager = screen_manager.ScreenManager(BACKGROUND)
+screen_manager = screen_manager.ScreenManager(BACKGROUND, screen, player)
 
 # Initialise level manager
-level_manager = level_manager.LevelManager()
+level_manager = level_manager.LevelManager(player, grass, screen, screen_manager, barrier_manager, coin_manager, enemy_manager)
 
 # Set initial level
 level = 1 ##============================================================================================
@@ -52,24 +52,24 @@ running = True
 while running:
 
     if new_level:
-        level_manager.setup_level(level, player, grass, screen_manager, screen)
-        barriers = level_manager.get_level_barriers(level, barrier_manager)
-        coins = level_manager.get_level_coins(level, coin_manager)
-        enemies = level_manager.get_level_enemies(level, enemy_manager)
+        level_manager.setup_level(level)
+        barriers = level_manager.get_level_barriers(level)
+        coins = level_manager.get_level_coins(level)
+        enemies = level_manager.get_level_enemies(level)
         new_level = False
         
     # Set screen colour as green
     screen.fill(BACKGROUND)
 
     # Display player wealth and current level 
-    screen_manager.display_wealth_and_level(screen, level, player)
+    screen_manager.display_wealth_and_level(level)
 
     # Place player, grass, enemies, barriers and coins on screen
     screen.blit(player.image, (player.x, player.y))
     screen.blit(grass.image, (grass.x, grass.y))
-    enemy_manager.draw(screen, enemies)
-    barrier_manager.draw(screen, barriers)
-    coin_manager.draw(screen, coins)
+    enemy_manager.draw(enemies)
+    barrier_manager.draw(barriers)
+    coin_manager.draw(coins)
 
     # Move player 
     player.move(barriers)
@@ -78,13 +78,17 @@ while running:
     pygame.display.update()
   
     # Check if player reaches coin
-    coin_manager.player_has_reached(player, coins)
+    coin_manager.player_has_reached(coins)
 
     # Check if player reaches enemy
-    enemy_manager.player_has_reached(player, enemies, screen, screen_manager)
+    enemy_manager.player_has_reached(enemies)
+
+    # Display "Back to Level 1" message if player loses all their wealth
+    if player.wealth < 0:
+        screen_manager.display_back_to_level1()
 
     # Check if player reaches grass
-    if grass.player_has_reached(player):
+    if grass.player_has_reached():
         level += 1
         new_level = True   
 
@@ -95,7 +99,7 @@ while running:
 
     # Check if player has completed game
     if level > LAST_LEVEL:
-        screen_manager.game_is_completed(screen)
+        screen_manager.game_is_completed()
         running = False
 
     # Reset to level 1 if player wealth is below $0

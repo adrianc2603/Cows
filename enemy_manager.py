@@ -6,16 +6,18 @@ class EnemyManager:
     """
     Constructor
     """
-    def __init__(self):
+    def __init__(self, screen, player):
         self.blue_image = "resources/blue_enemy.png"
         self.red_image = "resources/red_enemy.png"
+        self.screen = screen
+        self.player = player
 
     """
     Place all enemies on the screen
     """
-    def draw(self, screen, enemies):
+    def draw(self, enemies):
         for e in enemies:
-            screen.blit(e.image, (e.x, e.y))
+            self.screen.blit(e.image, (e.x, e.y))
 
     """
     Level 3 Enemies
@@ -123,8 +125,8 @@ class EnemyManager:
     If a player has collided with an enemy, remove it from the screen and 
     subtract wealth from the player
     """
-    def player_has_reached(self, player, enemies, screen, screen_manager):
+    def player_has_reached(self, enemies):
         for e in enemies:
-            if e.rectangle.colliderect(player.rectangle):
-                player.remove_wealth(e,screen, screen_manager)
+            if e.rectangle.colliderect(self.player.rectangle):
+                self.player.remove_wealth(e)
                 enemies.remove(e)

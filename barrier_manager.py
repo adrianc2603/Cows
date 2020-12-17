@@ -6,15 +6,15 @@ class BarrierManager:
     """
     Constructor
     """
-    def __init__(self):
-        pass
-        
+    def __init__(self, screen):
+        self.screen = screen
+
     """
     Place the barriers on the screen
     """
-    def draw(self, screen, barriers):
+    def draw(self, barriers):
         for b in barriers:
-            pygame.draw.rect(screen, b.colour, b.rectangle)
+            pygame.draw.rect(self.screen, b.colour, b.rectangle)
 
     """
     Level 1 Barriers

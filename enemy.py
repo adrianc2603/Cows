@@ -6,7 +6,6 @@ class Enemy:
     Constructor
     """
     def __init__(self, image, x, y, is_red = False):
-        # self.image_path = image
         self.image = pygame.image.load(image)
         self.x = x
         self.y = y

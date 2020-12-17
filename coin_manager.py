@@ -6,17 +6,19 @@ class CoinManager:
     """
     Constructor
     """
-    def __init__(self):
+    def __init__(self, screen, player):
         self.gold = (212, 175, 55)
         self.silver = (192, 192, 192)
         self.bronze = (80, 50, 20)
+        self.screen = screen
+        self.player = player
 
     """
     Place all coins on the screen
     """
-    def draw(self, screen, coins):
+    def draw(self, coins):
         for c in coins:
-            pygame.draw.circle(screen, c.colour, [c.x, c.y], c.radius)
+            pygame.draw.circle(self.screen, c.colour, [c.x, c.y], c.radius)
 
     """
     Level 1 Coins
@@ -398,8 +400,8 @@ class CoinManager:
     If a player has collected a coin, remove it from the screen and add 
     the coin's worth to the player's wealth
     """
-    def player_has_reached(self, player, coins):
+    def player_has_reached(self, coins):
         for c in coins:
-            if c.rectangle.colliderect(player.rectangle):
-                player.add_to_wealth(c.value)
+            if c.rectangle.colliderect(self.player.rectangle):
+                self.player.add_to_wealth(c.value)
                 coins.remove(c)
