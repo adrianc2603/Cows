@@ -6,6 +6,7 @@ import coin_manager
 import enemy_manager
 import screen_manager
 import level_manager
+import time
 
 # GLOBAL VARIABLES
 LAST_LEVEL = 10 
@@ -40,10 +41,13 @@ enemies = []
 screen_manager = screen_manager.ScreenManager(BACKGROUND, screen, player)
 
 # Initialise level manager
-level_manager = level_manager.LevelManager(player, grass, screen, screen_manager, barrier_manager, coin_manager, enemy_manager)
+level_manager = level_manager.LevelManager(player, grass, screen, screen_manager, barrier_manager, 
+    coin_manager, enemy_manager)
 
 # Set initial level
 level = 1 ##============================================================================================
+time_elapsed = 0
+start_time = int(round(time.time()))
 new_level = True
 
 #=============================== MAIN GAMEPLAY ================================
@@ -61,8 +65,8 @@ while running:
     # Set screen colour as green
     screen.fill(BACKGROUND)
 
-    # Display player wealth and current level 
-    screen_manager.display_wealth_and_level(level)
+    # Display player wealth, time elapsed and current level 
+    screen_manager.display_wealth_time_and_level(time_elapsed, level)
 
     # Place player, grass, enemies, barriers and coins on screen
     screen.blit(player.image, (player.x, player.y))
@@ -81,11 +85,13 @@ while running:
     coin_manager.player_has_reached(coins)
 
     # Check if player reaches enemy
-    enemy_manager.player_has_reached(enemies)
+    if enemy_manager.player_has_reached(enemies):
+        time_elapsed += 5
 
-    # Display "Back to Level 1" message if player loses all their wealth
-    if player.wealth < 0:
-        screen_manager.display_back_to_level1()
+    # Increment the time elapsed each second 
+    if (start_time + 1) <= int(round(time.time())):
+        time_elapsed += 1
+        start_time = int(round(time.time()))
 
     # Check if player reaches grass
     if grass.player_has_reached():
@@ -104,6 +110,9 @@ while running:
 
     # Reset to level 1 if player wealth is below $0
     if player.wealth < 0:
+        screen_manager.display_back_to_level1()
         player.wealth = 0
         level = 1
+        time_elapsed = 0
+        start_time = int(round(time.time()))
         new_level = True

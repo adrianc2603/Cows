@@ -122,7 +122,7 @@ class BarrierManager:
         barriers.append(barrier.Barrier(80, 230, 10, 240)) # 3
         barriers.append(barrier.Barrier(170, 80, 10, 310)) # 4
         barriers.append(barrier.Barrier(170, 390, 155, 10)) # 5
-        barriers.append(barrier.Barrier(365, 0, 10, 80)) # 6
+        barriers.append(barrier.Barrier(405, 0, 10, 80)) # 6
         barriers.append(barrier.Barrier(300, 150, 310, 10)) # 7
         barriers.append(barrier.Barrier(600, 70, 10, 80)) # 8
         barriers.append(barrier.Barrier(290, 150, 10, 90)) # 9

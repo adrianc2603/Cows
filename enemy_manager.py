@@ -32,12 +32,12 @@ class EnemyManager:
     """
     def level4(self):
         enemies = []
-        enemies.append(enemy.Enemy(self.blue_image, 290, 5)) 
-        enemies.append(enemy.Enemy(self.blue_image, 610, 5)) 
-        enemies.append(enemy.Enemy(self.blue_image, 190, 160)) 
-        enemies.append(enemy.Enemy(self.blue_image, 511, 205)) 
-        enemies.append(enemy.Enemy(self.blue_image, 400, 305)) 
-        enemies.append(enemy.Enemy(self.blue_image, 40, 395)) 
+        enemies.append(enemy.Enemy(self.blue_image, 290, 15)) 
+        enemies.append(enemy.Enemy(self.blue_image, 610, 15)) 
+        enemies.append(enemy.Enemy(self.blue_image, 190, 170)) 
+        enemies.append(enemy.Enemy(self.blue_image, 511, 210)) 
+        enemies.append(enemy.Enemy(self.blue_image, 405, 315)) 
+        enemies.append(enemy.Enemy(self.blue_image, 40, 405)) 
         return enemies
 
     """
@@ -45,11 +45,11 @@ class EnemyManager:
     """
     def level5(self):
         enemies = []
-        enemies.append(enemy.Enemy(self.blue_image, 320, 20)) 
-        enemies.append(enemy.Enemy(self.blue_image, 632, 40)) 
+        enemies.append(enemy.Enemy(self.blue_image, 322, 20)) 
+        enemies.append(enemy.Enemy(self.blue_image, 625, 40)) 
         enemies.append(enemy.Enemy(self.red_image, 460, 205, True)) 
-        enemies.append(enemy.Enemy(self.blue_image, 270, 295)) 
-        enemies.append(enemy.Enemy(self.blue_image, 320, 395)) 
+        enemies.append(enemy.Enemy(self.blue_image, 270, 305)) 
+        enemies.append(enemy.Enemy(self.blue_image, 320, 405)) 
         return enemies
 
 
@@ -58,9 +58,9 @@ class EnemyManager:
     """
     def level6(self):
         enemies = []
-        enemies.append(enemy.Enemy(self.blue_image, 200, 90)) 
-        enemies.append(enemy.Enemy(self.blue_image, 520, 80)) 
-        enemies.append(enemy.Enemy(self.red_image, 625, 80, True)) 
+        enemies.append(enemy.Enemy(self.blue_image, 200, 100)) 
+        enemies.append(enemy.Enemy(self.blue_image, 520, 90)) 
+        enemies.append(enemy.Enemy(self.red_image, 625, 90, True)) 
         return enemies
 
     """
@@ -72,8 +72,8 @@ class EnemyManager:
         enemies.append(enemy.Enemy(self.blue_image, 10, 90)) 
         enemies.append(enemy.Enemy(self.blue_image, 10, 170)) 
         enemies.append(enemy.Enemy(self.blue_image, 10, 250)) 
-        enemies.append(enemy.Enemy(self.red_image, 213, 85, True)) 
-        enemies.append(enemy.Enemy(self.red_image, 310, 85, True)) 
+        enemies.append(enemy.Enemy(self.red_image, 213, 95, True)) 
+        enemies.append(enemy.Enemy(self.red_image, 310, 95, True)) 
         return enemies
 
     """
@@ -130,3 +130,5 @@ class EnemyManager:
             if e.rectangle.colliderect(self.player.rectangle):
                 self.player.remove_wealth(e)
                 enemies.remove(e)
+                return True
+        return False        

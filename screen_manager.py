@@ -15,14 +15,16 @@ class ScreenManager:
         self.player = player
 
     """
-    Display the player's wealth and current level at the top of the screen
+    Display the player's wealth, time elapsed and current level at the top of the screen
     """
-    def display_wealth_and_level(self, level):
+    def display_wealth_time_and_level(self, time_elapsed, level):
         wealth = self.small_font.render("Wealth: $" + str(self.player.wealth), True, self.text_colour, self.text_background)
         self.display_text(wealth, 175, 10)
+        time = self.small_font.render("Time: " + str(time_elapsed), True, self.text_colour, self.text_background)
+        self.display_text(time, 350, 10)
         level = self.small_font.render("Level: " + str(level), True, self.text_colour, self.text_background)
         self.display_text(level, 525, 10)
-
+       
     """
     Display the given message on the screen
     """
