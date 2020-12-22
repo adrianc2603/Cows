@@ -22,3 +22,10 @@ MOVE DOWN: Down Arrow Key
 
 ### Play on Your Machine
 Make sure your machine is running python3 (I used python 3.8) and pygame (I used pygame 2.0.0).
+
+### Acknowledgements
+I recognise that the following images were sources from the following locations and are not my work. I take no credit for the work done to create these:
+- player.png: This image was sourced from http://clipart-library.com/clipart/cow-clip-art-3.htm
+- grass.png: This image was sourced from http://clipart-library.com/clipart/688252.htm
+- blue_enemy.png: This image was supplied to me by the SOFT2201 Semester 2, 2020 teaching staff as part of the game development undertaken in that course.
+- red_enemy.png: This image was supplied to me by the SOFT2201 Semester 2, 2020 teaching staff as part of the game development undertaken in that course.
