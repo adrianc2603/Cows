@@ -10,4 +10,4 @@ class Enemy:
         self.x = x
         self.y = y
         self.is_red = is_red
-        self.rectangle = pygame.Rect(x + 7, y + 4, 40, 33) 
+        self.rectangle = pygame.Rect(x + 7, y + 2, 40, 35) 
