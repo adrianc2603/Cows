@@ -10,7 +10,7 @@ import time
 
 # GLOBAL VARIABLES
 LAST_LEVEL = 10 
-BACKGROUND = (124, 252 , 0)
+BACKGROUND = (255, 255 , 0)
 
 # Initialise pygame and the screen
 pygame.init()
@@ -66,7 +66,7 @@ while running:
         enemies = level_manager.get_level_enemies(level)
         new_level = False
         
-    # Set screen colour as green
+    # Set screen colour as yellow
     screen.fill(BACKGROUND)
 
     # Display player wealth, time elapsed and current level 
