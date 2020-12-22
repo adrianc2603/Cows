@@ -47,7 +47,7 @@ level_manager = level_manager.LevelManager(player, grass, screen, screen_manager
 screen_manager.display_start_screen()
 
 # Set initial level
-level = 1 
+level = 1
 time_elapsed = 0
 start_time = int(round(time.time()))
 new_level = True
