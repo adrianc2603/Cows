@@ -59,7 +59,7 @@ class LevelManager:
             self.grass.level10()    
 
     """
-    Return the list of barriers for each level level 
+    Return the list of barriers for each level
     """
     def get_level_barriers(self, level):
         if level == 1:
@@ -95,7 +95,7 @@ class LevelManager:
         return []
 
     """
-    Return the list of coins for each level level 
+    Return the list of coins for each level 
     """
     def get_level_coins(self, level):
         if level == 1:
@@ -131,7 +131,7 @@ class LevelManager:
         return []
 
     """
-    Return the list of coins for each level level 
+    Return the list of enemies for each level 
     """
     def get_level_enemies(self, level):
         if level == 3:

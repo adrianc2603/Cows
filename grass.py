@@ -99,7 +99,7 @@ class Grass:
         self.rectangle = pygame.Rect(self.x + 20, self.y + 10, 54, 20)
 
     """
-    Return 1 if the player has reached the grass. Return 0 otherwise
+    Return True if the player has reached the grass. Return False otherwise
     """
     def player_has_reached(self):
         if self.rectangle.colliderect(self.player.rectangle):

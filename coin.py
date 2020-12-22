@@ -14,6 +14,9 @@ class Coin:
         self.diameter = 30
         self.rectangle = pygame.Rect(x - self.radius, y - self.radius, self.diameter, self.diameter)
 
+    """
+    Return the value of the coin based on its colour
+    """
     def get_value(self):
         if self.colour == (212, 175, 55): # Gold
             return 5
@@ -21,4 +24,5 @@ class Coin:
             return 3
         if self.colour == (80, 50, 20): # Bronze
             return 1
+        # Note, no other colours are used    
             

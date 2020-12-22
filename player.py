@@ -89,9 +89,9 @@ class Player:
     """
     def move(self, barriers):
 
-        # Make sure player cannot move through barrier
+        # Make sure player cannot move through a barrier
         no_left = no_right = no_up = no_down = False
-        tolerance = 2
+        tolerance = self.velocity
         for b in barriers:
             if b.rectangle.colliderect(self.rectangle):
                 if abs(b.rectangle.right - self.rectangle.left) <= tolerance:
@@ -124,7 +124,7 @@ class Player:
         self.rectangle.top = self.y
 
     """
-    Add wealth to the player if they pick up coins
+    Add wealth to the player if they picked up a coin
     """
     def add_to_wealth(self, value):
         self.wealth += value

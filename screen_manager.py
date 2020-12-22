@@ -19,6 +19,8 @@ class ScreenManager:
     """
     def display_start_screen(self):
         while True:
+
+            # Display required text on screen
             self.screen.fill(self.text_background)
             title = self.big_font.render("Welcome to Cows", True, self.text_colour, self.text_background)
             self.display_text(title, 350, 125)
@@ -28,10 +30,12 @@ class ScreenManager:
             self.display_text(start_play, 350, 325)
             pygame.display.update()
 
+            # Return from this method (and start the game) is Enter/Return is pressed
             keys = pygame.key.get_pressed()
             if keys[pygame.K_RETURN]:
                 return
 
+            # Quit the program if the player has pressed exit
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     exit()    
@@ -65,10 +69,10 @@ class ScreenManager:
                 pygame.display.update()
         
     """ 
-    Warn the player that blue enemies steal $50
+    Warn the player that blue enemies steal $50 and add 5 seconds to their time
     """
     def blue_enemy_warning(self):
-        msg = self.big_font.render("Blue Enemies Steal $50", True, self.text_colour, self.text_background)
+        msg = self.big_font.render("Blue Enemies Steal $50, Adding 5 Seconds", True, self.text_colour, self.text_background)
         small_msg = self.small_font.render("If you go below $0, you go back to Level 1", True, self.text_colour, self.text_background)
         self.display_enemy_warning(msg, small_msg, pygame.image.load("resources/blue_enemy.png"))
 
@@ -94,22 +98,20 @@ class ScreenManager:
             pygame.display.update()
 
     """
-    Display this message when a player goes back to level 1 by colliding with a red enemy
+    Display "Back to Level 1" message when a player goes back to level 1 by colliding with a red enemy
     """
     def display_back_to_level1(self):
         msg = self.big_font.render("Back to Level 1", True, self.text_colour, self.text_background)
         self.screen.fill(self.text_background)
         self.display_message_time_period(msg, 350, 233, 3)
 
-
     """
-    Display "You Win!" message on the screen and then exit the game
+    Display "You Win!" message on the screen once the last level is completed
     """
     def game_is_completed(self):
         msg = self.big_font.render("You Win!", True, self.text_colour, self.text_background)
         self.screen.fill(self.text_background)
         self.display_message_time_period(msg, 350, 233, 3)
-
 
     """
     Let the player enter their name to store their score in scores.txt file
@@ -119,6 +121,7 @@ class ScreenManager:
 
         while True:
 
+            # Display required text on screen
             self.screen.fill(self.text_background)
             please_display_name = self.big_font.render("Please enter your name:", True, self.text_colour, self.text_background)
             self.display_text(please_display_name, 360, 100)
@@ -129,6 +132,8 @@ class ScreenManager:
             """
             Please note this code was found on the following website and was not written by me:
             https://www.reddit.com/r/pygame/comments/205i05/get_user_input/
+            The purpose of this code is to allow the user to enter their name using the keyboard
+            and have it saved as a string.
             """
             event = pygame.event.poll()
             keys = pygame.key.get_pressed()

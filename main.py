@@ -41,19 +41,18 @@ enemies = []
 screen_manager = screen_manager.ScreenManager(BACKGROUND, screen, player)
 
 # Initialise level manager
-level_manager = level_manager.LevelManager(player, grass, screen, screen_manager, barrier_manager, 
-    coin_manager, enemy_manager)
+level_manager = level_manager.LevelManager(player, grass, screen, screen_manager, barrier_manager, coin_manager, enemy_manager)
 
 # Display the start screen
 screen_manager.display_start_screen()
 
 # Set initial level
-level = 1 ##============================================================================================
+level = 1 
 time_elapsed = 0
 start_time = int(round(time.time()))
 new_level = True
 
-# #=============================== MAIN GAMEPLAY ================================
+# #============================== MAIN GAMEPLAY ===============================
 
 running = True
 while running:
@@ -69,26 +68,26 @@ while running:
     # Set screen colour as yellow
     screen.fill(BACKGROUND)
 
-    # Display player wealth, time elapsed and current level 
+    # Display player wealth, time elapsed and current level on the screen
     screen_manager.display_wealth_time_and_level(time_elapsed, level)
 
-    # Place player, grass, enemies, barriers and coins on screen
+    # Place player, grass, enemies, barriers and coins on the screen
     screen.blit(player.image, (player.x, player.y))
     screen.blit(grass.image, (grass.x, grass.y))
     enemy_manager.draw(enemies)
     barrier_manager.draw(barriers)
     coin_manager.draw(coins)
 
-    # Move player 
+    # Move the player 
     player.move(barriers)
 
     # Update what is shown on the screen
     pygame.display.update()
   
-    # Check if player reaches coin
+    # Check if the player reaches a coin
     coin_manager.player_has_reached(coins)
 
-    # Check if player reaches enemy
+    # Check if the player reaches an enemy
     if enemy_manager.player_has_reached(enemies):
         time_elapsed += 5
 
@@ -97,17 +96,17 @@ while running:
         time_elapsed += 1
         start_time = int(round(time.time()))
 
-    # Check if player reaches grass
+    # Check if the player reaches the grass
     if grass.player_has_reached():
         level += 1
         new_level = True   
 
-    # Check if player has exited game
+    # Check if the player has exited the game
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    # If player has completed game, get their name and write their details to scores.txt
+    # If player has completed the game, get their name and write their details to scores.txt, as well as displaying them on the screen
     if level > LAST_LEVEL:
         screen_manager.game_is_completed()
         player_name = screen_manager.get_player_name()
@@ -117,7 +116,7 @@ while running:
         screen_manager.display_results(player_name, time_elapsed, player.wealth)
         running = False
 
-    # Reset to level 1 if player wealth is below $0
+    # Reset to level 1 if the player's wealth is below $0
     if player.wealth < 0:
         screen_manager.display_back_to_level1()
         player.wealth = 0
