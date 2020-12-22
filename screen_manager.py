@@ -15,6 +15,28 @@ class ScreenManager:
         self.player = player
 
     """
+    Display the start screen at the beginning of the game
+    """
+    def display_start_screen(self):
+        while True:
+            self.screen.fill(self.text_background)
+            title = self.big_font.render("Welcome to Cows", True, self.text_colour, self.text_background)
+            self.display_text(title, 350, 125)
+            instructions = self.small_font.render("Make sure you've read the README.md file before you play the game", True, self.text_colour, self.text_background)
+            self.display_text(instructions, 350, 225)
+            start_play = self.small_font.render("Press ENTER/RETURN to begin the game", True, self.text_colour, self.text_background)
+            self.display_text(start_play, 350, 325)
+            pygame.display.update()
+
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_RETURN]:
+                return
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    exit()    
+
+    """
     Display the player's wealth, time elapsed and current level at the top of the screen
     """
     def display_wealth_time_and_level(self, time_elapsed, level):

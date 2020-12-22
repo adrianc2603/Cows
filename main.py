@@ -44,6 +44,9 @@ screen_manager = screen_manager.ScreenManager(BACKGROUND, screen, player)
 level_manager = level_manager.LevelManager(player, grass, screen, screen_manager, barrier_manager, 
     coin_manager, enemy_manager)
 
+# Display the start screen
+screen_manager.display_start_screen()
+
 # Set initial level
 level = 1 ##============================================================================================
 time_elapsed = 0
@@ -121,4 +124,4 @@ while running:
         level = 1
         time_elapsed = 0
         start_time = int(round(time.time()))
-        new_level = True
+        new_level = True        
