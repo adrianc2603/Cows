@@ -10,7 +10,7 @@ class Player:
         self.image = pygame.image.load("resources/player.png")
         self.rectangle = self.image.get_rect()
         self.x = 10
-        self.y = 5
+        self.y = 8
         self.velocity = 2 
         self.wealth = 0
 
@@ -19,7 +19,7 @@ class Player:
     """
     def level1(self):
         self.x = 10
-        self.y = 5
+        self.y = 8
 
     """
     Level 2 Position
@@ -33,35 +33,35 @@ class Player:
     """
     def level3(self):
         self.x = 10
-        self.y = 320
+        self.y = 323
 
     """
     Level 4 Position
     """
     def level4(self):
         self.x = 10
-        self.y = 5
+        self.y = 8
 
     """
     Level 5 Position
     """
     def level5(self):
         self.x = 10
-        self.y = 198
+        self.y = 201
 
     """
     Level 6 Position
     """
     def level6(self):
         self.x = 310
-        self.y = 169
+        self.y = 172
 
     """
     Level 7 Position
     """
     def level7(self):
-        self.x = 110
-        self.y = 255
+        self.x = 108
+        self.y = 258
 
     """
     Level 8 Position
@@ -75,14 +75,14 @@ class Player:
     """
     def level9(self):
         self.x = 310
-        self.y = 215
+        self.y = 218
 
     """
     Level 10 Position
     """
     def level10(self):
-        self.x = 10
-        self.y = 5  
+        self.x = 8
+        self.y = 8
 
     """
     Move the player if there is no barrier in the way
@@ -111,7 +111,7 @@ class Player:
             self.x += self.velocity
         if keys[pygame.K_UP] and self.y > 0 and not no_up:
             self.y -= self.velocity
-        if keys[pygame.K_DOWN] and self.y < 402 and not no_down:
+        if keys[pygame.K_DOWN] and self.y < 411 and not no_down:
             self.y += self.velocity  
 
         self.update_rectangle()

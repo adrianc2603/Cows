@@ -18,7 +18,7 @@ screen = pygame.display.set_mode((700, 465))
 
 # Initialise game caption and icon
 pygame.display.set_caption("Cows")
-icon = pygame.image.load("resources/icon.png")
+icon = pygame.image.load("resources/player.png")
 pygame.display.set_icon(icon)
 
 # Initialise player and grass objects
