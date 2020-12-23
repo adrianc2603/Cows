@@ -41,7 +41,8 @@ enemies = []
 screen_manager = screen_manager.ScreenManager(BACKGROUND, screen, player)
 
 # Initialise level manager
-level_manager = level_manager.LevelManager(player, grass, screen, screen_manager, barrier_manager, coin_manager, enemy_manager)
+level_manager = level_manager.LevelManager(player, grass, screen, 
+    screen_manager, barrier_manager, coin_manager, enemy_manager)
 
 # Display the start screen
 screen_manager.display_start_screen()
@@ -118,14 +119,20 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    # If player has completed the game, get their name and write their details to scores.txt, as well as displaying them on the screen
+    # If player has completed the game, get their name and write their details 
+    # to scores.txt, as well as displaying them on the screen
     if level > LAST_LEVEL:
         screen_manager.game_is_completed()
-        player_name = screen_manager.get_player_name()
+        name = screen_manager.get_player_name()
+
+        # Write to the file
         f = open("scores.txt", "a")
-        f.write("Name: " + player_name + " ----- Time: " + str(time_elapsed) + " seconds ----- Wealth: $" + str(player.wealth) + "\n\n")
+        f.write("Name: " + name + " ----- Time: " + str(time_elapsed) + 
+            " seconds ----- Wealth: $" + str(player.wealth) + "\n\n")
         f.close
-        screen_manager.display_results(player_name, time_elapsed, player.wealth)
+
+        # Display results on screen until player presses exit
+        screen_manager.display_results(name, time_elapsed, player.wealth)
         running = False
 
     # Reset to level 1 if the player's wealth is below $0

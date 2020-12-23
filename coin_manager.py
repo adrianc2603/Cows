@@ -279,7 +279,7 @@ class CoinManager:
 
     """
     If a player has collected a coin, remove it from the screen and add 
-    the coin's worth to the player's wealth
+    the coin's value to the player's wealth
     """
     def player_has_reached(self, coins):
         for c in coins:

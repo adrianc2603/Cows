@@ -3,13 +3,14 @@ class LevelManager:
     """
     Constructor
     """
-    def __init__(self, player, grass, screen, screen_manager, barrier_manager, coin_manager, enemy_manager):
-        self.player = player 
-        self.grass = grass 
-        self.screen_manager = screen_manager
-        self.barrier_manager = barrier_manager
-        self.coin_manager = coin_manager
-        self.enemy_manager = enemy_manager
+    def __init__(self, player, grass, screen, screen_manager, barrier_manager, 
+        coin_manager, enemy_manager):
+            self.player = player 
+            self.grass = grass 
+            self.screen_manager = screen_manager
+            self.barrier_manager = barrier_manager
+            self.coin_manager = coin_manager
+            self.enemy_manager = enemy_manager
 
     """
     Set the position of the player and grass at the beginning of each level.
