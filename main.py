@@ -54,8 +54,20 @@ new_level = True
 
 # #============================== MAIN GAMEPLAY ===============================
 
+pause_flag = False
 running = True
+
 while running:
+
+    # Player pauses game
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_p]:
+        pause_flag = True
+
+    # Display pause screen
+    if (pause_flag):
+        screen_manager.display_paused()
+        pause_flag = False
 
     # Setup the new level
     if new_level:

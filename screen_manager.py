@@ -30,7 +30,31 @@ class ScreenManager:
             self.display_text(start_play, 350, 325)
             pygame.display.update()
 
-            # Return from this method (and start the game) is Enter/Return is pressed
+            # Return from this method (and start the game) if Enter/Return is pressed
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_RETURN]:
+                return
+
+            # Quit the program if the player has pressed exit
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    exit()    
+
+    """
+    Display the pause screen
+    """
+    def display_paused(self):
+        while True:
+
+            # Display required text on screen
+            self.screen.fill(self.text_background)
+            msg = self.big_font.render("Paused", True, self.text_colour, self.text_background)
+            self.display_text(msg, 350, 200)
+            small_msg = self.small_font.render("Press Enter/Return to Continue", True, self.text_colour, self.text_background)
+            self.display_text(small_msg, 350, 260)
+            pygame.display.update()
+
+            # Return from this method (and resume the game) if P is pressed
             keys = pygame.key.get_pressed()
             if keys[pygame.K_RETURN]:
                 return

@@ -20,6 +20,10 @@ MOVE UP: Up Arrow Key
 
 MOVE DOWN: Down Arrow Key
 
+PAUSE: P
+
+UNPAUSE: Enter/Return
+
 ### Play on Your Machine
 Make sure your machine is running python3 (I used python 3.8) and pygame (I used pygame 2.0.0).
 
