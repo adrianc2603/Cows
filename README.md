@@ -25,7 +25,7 @@ PAUSE: P
 UNPAUSE: Enter/Return
 
 ### Play on Your Machine
-Make sure your machine is running python3 (I used python 3.8) and pygame (I used pygame 2.0.0).
+Make sure your machine is running python3 (I used python 3.8) and pygame (I used pygame 2.0.0). Then run into the command line 'python3 main.py'.
 
 ### Acknowledgements
 I recognise that the following images were sources from the following locations and are not my work. I take no credit for the work done to create these:
